@@ -4,30 +4,38 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
-  margin: auto;
+  margin: 0px;
   padding: 0px;
   max-width: 500px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
-
+ 
 .post-container {
   margin-top: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
-  padding: 15px;
+  padding: 15px 0px;
+ 
 }
 .post-content img {
   max-width: 100%;
   width: 100%;
   height: auto;
-  display: block; 
+  object-fit: cover;
+   
 }
 
 .post-header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  padding: 0px 15px;
 }
 
 .profile-pic {
@@ -50,13 +58,16 @@ body {
 
 .post-content {
   margin: 10px 0;
-  font-size: 14px;
+  font-size: 14px; 
 }
-
+.post-content p{
+  padding: 0px 15px;
+}
 .post-footer {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
+  padding: 0px 15px;
 }
 
 .post-footer button {

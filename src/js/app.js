@@ -1,6 +1,5 @@
-
-  // Fetch posts from the Fake API
-const apiUrl = 'https://jsonplaceholder.typicode.com/posts'; // Example Fake API URL
+// Fetch posts from the Fake API
+const apiUrl = "https://jsonplaceholder.typicode.com/posts"; // Example Fake API URL
 
 // Function to fetch and display posts
 async function fetchPosts() {
@@ -8,26 +7,25 @@ async function fetchPosts() {
     // Fetch data from the API
     const response = await fetch(apiUrl);
     if (!response.ok) {
-      throw new Error('Failed to fetch posts');
+      throw new Error("Failed to fetch posts");
     }
 
     const posts = await response.json(); // Parse JSON data
     displayPosts(posts); // Call function to display posts
   } catch (error) {
-    console.error('Error:', error);
-    document.getElementById('posts').innerHTML = '<p>Failed to load posts.</p>';
+    console.error("Error:", error);
+    document.getElementById("posts").innerHTML = "<p>Failed to load posts.</p>";
   }
 }
 
 // Function to display posts on the page
 function displayPosts(posts) {
-  const postsContainer = document.getElementById('posts');
-  postsContainer.innerHTML = ''; // Clear any existing content
+  const postsContainer = document.getElementById("posts");
+  postsContainer.innerHTML = ""; // Clear any existing content
 
-  posts.forEach(post => {  
-    const postElement = document.createElement('div');
-    postElement.className = 'post-container';
-
+  posts.forEach((post) => {
+    const postElement = document.createElement("div");
+    postElement.className = "post-container";
     postElement.innerHTML = `
      <div class="post-header">
         <img
