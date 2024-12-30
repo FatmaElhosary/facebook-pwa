@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../..//node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- fortawesome -->
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <!-- custom styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <nav class="fixed-top">
+        <div
+            class="container-fluid  bg-white d-flex justify-content-between align-items-center p-3  border-bottom border-dark">
+            <i class="fa-solid fa-arrow-left fa-2xl"></i>
+            <h3 class="fw-normal">Mohamed Omara</h3>
+            <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
+        </div>
+    </nav>
+    <header class="border-bottom">
+        <div class="coverPhoto position-relative container rounded-bottom-3 overflow-hidden">
+            <div
+                class="camera p-2 position-absolute bg-white rounded-circle d-flex justify-content-center align-items-center border border-3 border-white">
+                <div class="">
+                    <i class="fa-solid fa-camera fa-xl"></i>
+                    <span class="d-none d-lg-inline fw-medium">Edit cover photo</span>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between container flex-column flex-lg-row row-gap-1 mt-2 pb-3 px-lg-3">
+            <div class="d-flex flex-column flex-md-row gap-4 align-items-md-center position-relative ">
+                <div class="userPhoto position-absolute">
+                    <img src="../imgs/img.jpg" class="img-fluid rounded-circle  img-thumbnail" alt="...">
+                </div>
+
+                <div class="user  mt-5 mt-md-0 pt-4 pt-md-0">
+                    <h3 class="fw-semibold">Mohamed Omara</h3>
+                    <h5>500 <span class="fw-normal fs-6 text-black-50">friends</span></h5>
+                    <p>know me first, judge me later 🌿</p>
+                </div>
+            </div>
+            <div class="btns align-self-lg-center">
+                <button class="btn btn-primary"><i class="fa-solid fa-plus pe-1"></i>Add to story</button>
+                <button class="btn btn-gray text-black my-1"><i class="fa-solid fa-pen pe-1"></i>Edit profile</button>
+                <button class="btn btn-gray"><i class="fa-solid fa-ellipsis"></i></button>
+            </div>
+        </div>
+    </header>
+    <main class="mt-2">
+        <ul class="container nav nav-pills bg-white p-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active text-dark-emphasis fw-semibold" id="pills-posts-tab"
+                    data-bs-toggle="pill" data-bs-target="#pills-posts" type="button" role="tab"
+                    aria-controls="pills-posts" aria-selected="true">posts</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-dark-emphasis fw-semibold" id="pills-photos-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-photos" type="button" role="tab" aria-controls="pills-photos"
+                    aria-selected="false">photos</button>
+            </li>
+        </ul>
+        <div class="container bg-white py-3 rounded-2">
+            
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-posts" role="tabpanel" aria-labelledby="pills-home-tab"
+                    tabindex="0">
+                    <h4 class="mb-4">Details</h4>
+                    <div class="d-flex flex-column gap-3 list mb-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-graduation-cap fa-xl text-center"></i>
+                            <div>Studies at Fci:faculty of computers and information shebin el kom</div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-house fa-xl text-center"></i>
+                            <div>Lives in <span class="fw-bold">El Shohada, Al Minufiyah, Egypt</span></div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-location-dot fa-xl text-center">
+                            </i>
+                            <div>From <span class="fw-bold">Cairo, Egypt</span></div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-heart fa-xl text-center">
+                            </i>
+                            <div>Single</div>
+                        </div>
+                    </div>
+                    <h4 class="mb-4">Posts</h4>
+                    <div class="d-flex justify-content-between justify-content-md-start gap-md-5 align-items-center">
+                        <div class="userPhoto  overflow-hidden d-flex align-items-center gap-3">
+                            <img src="../imgs/img.jpg" alt="" class="rounded-circle">
+                            <span>What's on your mind?</span>
+                        </div>
+                        <i class="fa-regular fa-image fa-2xl" style="color: #4ab05b;"></i>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab"
+                    tabindex="0">
+                    <h2>Your photos...</h2>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
