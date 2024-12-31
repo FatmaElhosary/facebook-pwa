@@ -1,3 +1,12 @@
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/src/sw.js")
+    .then((reg) => {
+      console.log("service worker is registered",reg);
+    })
+    .catch((err) => console.log("service worker is not registered",err));
+}
+
 // Fetch posts from the Fake API
 const apiUrl = "https://jsonplaceholder.typicode.com/posts"; // Example Fake API URL
 
