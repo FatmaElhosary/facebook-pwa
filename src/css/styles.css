@@ -2,10 +2,10 @@
   --primary: #0866ff;
   --secondary: #c5c2c2;
 }
-body {
+/* body {
   background-color: #f2f4f7;
   height: 200vh;
-}
+} */
 header {
   background-image: linear-gradient(#a29e9e, #fff 40%);
 }
@@ -60,10 +60,8 @@ main .userPhoto img {
     -ms-border-radius: 1rem !important;
     -o-border-radius: 1rem !important;
   }
-:root {
-  
-  --primary: #1877f2;
 }
+ 
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
