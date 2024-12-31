@@ -11,3 +11,22 @@ window.addEventListener("scroll", function () {
     navBill.classList.replace("container-fluid", "container");
   }
 });
+
+const baseURL = "https://jsonplaceholder.typicode.com";
+
+(function getUserData(userId) {
+  fetch(`${baseURL}/users/${userId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setData(data);
+    });
+})("1");
+
+function setData(userData) {
+  document.querySelectorAll(".userName").forEach((ele) => {
+    ele.innerHTML = userData.name || "Mohamed Omara";
+  });
+  document.querySelector(".address").innerHTML = `${
+    userData?.address?.street || "El Shohada"
+  }, ${userData?.address?.city || "Al Minufiyah, Egypt"}`;
+}
