@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../..//node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- custom styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <main>
+        <div
+            class="content min-vh-100 container d-flex flex-column text-center justify-content-center align-items-md-center  flex-md-row">
+            <div class="logo text-md-start pt-md-4">
+                <p class="h1 fw-bolder text-primary opacity-100">facebook</p>
+                <p class="fs-3 sub-section">Connect with friends and the world around you on Faceboom</p>
+            </div>
+            <div class="logo flex-md-grow-1 bg-white p-5 shadow-lg rounded-3 sub-section">
+                <form class="d-flex flex-column row-gap-3">
+                    <div class="alert alert-danger d-none" role="alert">
+                        incorrect email or password
+                    </div>
+                    <input type="email" class="form-control" id="userEmail" placeholder="Email">
+                    <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                    <button type="button" class="btn btn-primary fw-bold" id="loginBtn">Login</button>
+                    <p class="text-primary">Forget password?</p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>

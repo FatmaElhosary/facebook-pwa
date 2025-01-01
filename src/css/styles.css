@@ -4,7 +4,6 @@
 }
 body {
   background-color: #f2f4f7;
-  height: 200vh;
 }
 header {
   background-image: linear-gradient(#a29e9e, #fff 40%);
@@ -46,6 +45,9 @@ header .userPhoto {
 }
 main .userPhoto img {
   width: 3rem;
+}
+.sub-section{
+  max-width: 30rem;
 }
 @media (min-width: 767.98px) {
   .userPhoto {
