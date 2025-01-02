@@ -30,3 +30,29 @@ function setData(userData) {
     userData?.address?.street || "El Shohada"
   }, ${userData?.address?.city || "Al Minufiyah, Egypt"}`;
 }
+
+(function getPosts(userId) {
+  fetch(`${baseURL}/posts`)
+    .then((res) => res.json())
+    .then((data) => {
+      userPosts = data.filter((post) => post.userId == userId);
+      // setPosts(userPosts);
+    });
+})("1");
+
+function setPosts(userPosts) {
+  for (let index = 0; index < userPosts.length; index++) {
+    const post = userPosts[index];
+  }
+}
+
+function createPost() {
+  let postInput = document.querySelector("#postInput").value;
+  fetch(`${baseURL}/posts`, {
+    method: 'POST',
+    body: JSON.stringify({ post: postInput }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err));
+}
