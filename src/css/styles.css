@@ -22,6 +22,48 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.title{
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.header-icon{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icons{
+  display: flex;
+  align-items: center;
+}
+.first-menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.second-menu{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.sec-icon:first-child i{
+  font-size: 1.3rem;
+  color: var(--primary);
+
+}
+.sec-icon i{
+  font-size: 1.3rem;
+  color: grey;
+}
+.sec-icon{
+ border: 1px solid rgb(239, 237, 237);
+ padding: 1.4rem;
+}
 header .userPhoto {
   width: 15rem;
   bottom: 70%;
