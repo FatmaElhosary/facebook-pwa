@@ -29,7 +29,7 @@ async function fetchPosts() {
 
 // Function to display posts on the page
 function displayPosts(posts) {
-  const postsContainer = document.getElementById("posts");
+  const postsContainer = document.getElementById("home-posts");
   postsContainer.innerHTML = ""; // Clear any existing content
 
   posts.forEach((post) => {
