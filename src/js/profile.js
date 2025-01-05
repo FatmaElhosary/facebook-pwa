@@ -19,7 +19,7 @@ const baseURL = "https://linked-posts.routemisr.com";
   if (!token) {
     console.log("Token Not Found");
     // redirect to login page
-    // window.location.href = "./";
+    window.location.href = "./login.html";
     return;
   }
   fetch(`${baseURL}/users/profile-data`, {
@@ -29,7 +29,6 @@ const baseURL = "https://linked-posts.routemisr.com";
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       setData(data);
     });
 })();

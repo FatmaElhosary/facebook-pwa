@@ -46,6 +46,12 @@ header .userPhoto {
 main .userPhoto img {
   width: 3rem;
 }
+/* start login page */
+.sub-section {
+  max-width: 30rem;
+}
+/* end login page */
+
 @media (min-width: 767.98px) {
   .userPhoto {
     position: static !important;
