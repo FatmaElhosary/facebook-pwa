@@ -41,6 +41,7 @@ function displayPosts(posts) {
           src="images/profile-img.jpg"
           alt="User Profile"
           class="profile-pic"
+          
         />
         <div class="user-info">
           <h4>Fatma</h4>

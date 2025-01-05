@@ -2,66 +2,49 @@
   --primary: #0866ff;
   --secondary: #c5c2c2;
 }
-/* body {
-  background-color: #f2f4f7;
-  height: 200vh;
-} */
-header {
-  background-image: linear-gradient(#a29e9e, #fff 40%);
+.title {
+  color: var(--primary);
+  font-weight: 600;
 }
-.btn-gray {
-  background-color: var(--secondary);
-  --bs-btn-hover-bg: var(--secondary);
-  --bs-btn-active-bg: var(--secondary);
-  --bs-btn-active-border-color: var(--secondary);
+.sub-section {
+  max-width: 30rem;
 }
-.coverPhoto {
-  height: 50vh;
-  min-height: 200px;
-  background-image: url(../imgs/bg-img.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-header .userPhoto {
-  width: 15rem;
-  bottom: 70%;
-}
-.camera {
-  right: 2rem;
-  bottom: 1rem;
-  width: 3rem;
-  height: 3rem;
-}
-.nav-pills button.active {
-  color: var(--primary) !important;
-  background-color: rgba(177, 177, 244, 0.5) !important;
-  border-radius: 50rem;
-  -webkit-border-radius: 50rem;
-  -moz-border-radius: 50rem;
-  -ms-border-radius: 50rem;
-  -o-border-radius: 50rem;
-}
-.tab-content .list i {
+.header-icon {
   width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-main .userPhoto img {
-  width: 3rem;
+.icons {
+  display: flex;
+  align-items: center;
 }
-@media (min-width: 767.98px) {
-  .userPhoto {
-    position: static !important;
-  }
-  .camera {
-    width: auto;
-    height: auto;
-    border-radius: 1rem !important;
-    -webkit-border-radius: 1rem !important;
-    -moz-border-radius: 1rem !important;
-    -ms-border-radius: 1rem !important;
-    -o-border-radius: 1rem !important;
-  }
+.first-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
- 
+.second-menu {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.sec-icon:first-child i {
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+.sec-icon i {
+  font-size: 1.3rem;
+  color: grey;
+}
+.sec-icon {
+  border: 1px solid rgb(239, 237, 237);
+  padding: 1.4rem;
+}
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
@@ -74,7 +57,7 @@ body {
   align-items: center; */
   margin: auto;
 }
- 
+
 .post-container {
   margin-top: 20px;
   background-color: #fff;
@@ -82,14 +65,12 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
   padding: 15px 0px;
- 
 }
 .post-content img {
   max-width: 100%;
   width: 100%;
   height: auto;
   object-fit: cover;
-   
 }
 
 .post-header {
@@ -119,9 +100,9 @@ body {
 
 .post-content {
   margin: 10px 0;
-  font-size: 14px; 
+  font-size: 14px;
 }
-.post-content p{
+.post-content p {
   padding: 0px 15px;
 }
 .post-footer {
