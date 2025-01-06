@@ -1,3 +1,5 @@
+var defferedPrompt;
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("/src/sw.js")
@@ -67,3 +69,11 @@ function displayPosts(posts) {
 
 // Call the function to fetch and display posts when the page loads
 fetchPosts();
+
+
+// Manual Prompet (close defult prompt)
+window.addEventListener("beforeinstallprompt", function(event){
+  event.preventDefault();
+  defferedPrompt = event 
+  return false ;
+})

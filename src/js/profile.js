@@ -83,7 +83,20 @@ function displayPosts() {
   });
 }
 
+function openPrompet() {
 
+  if(defferedPrompt){
+    defferedPrompt.prompt();
+
+  }
+  defferedPrompt.userChoise.then(function (choiseRes){
+    if(choiseRes.outcome =="dismissed"){
+      console.log("dismissed")
+    }else{
+      console.log("accepted")
+    }
+  })
+  }
 
 function createPost() {
   let post = document.querySelector("#postInput").value;
@@ -106,3 +119,4 @@ function createPost() {
     })
     .catch((err) => console.error(err));
 }
+
