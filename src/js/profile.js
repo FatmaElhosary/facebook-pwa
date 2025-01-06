@@ -72,11 +72,16 @@ function createPost() {
   let post = document.querySelector("#postInput").value;
   fetch(`${baseURL}/posts`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({ 
       title: 'foo',
       body: post,
       userId: 1,
     }),
+
+  })
 
   fetch(`${baseURL}/users/profile-data`, {
     headers: {
