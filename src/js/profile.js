@@ -51,6 +51,7 @@ function getUserPosts() {
 
 function showUserPosts(posts) {
   document.querySelector(".userPosts").innerHTML = posts
+    .reverse()
     .map(
       (post) => `<div class="post bg-white p-4 mb-3 md:w-50 mx-auto rounded-2">
                           <div class="header mb-2 userPhoto">
