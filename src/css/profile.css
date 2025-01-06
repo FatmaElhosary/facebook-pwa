@@ -1,0 +1,89 @@
+:root {
+  --primary: #0866ff;
+  --secondary: #c5c2c2;
+}
+body {
+  background-color: #f2f4f7;
+}
+header {
+  background-image: linear-gradient(#a29e9e, #fff 40%);
+}
+.btn-gray {
+  background-color: var(--secondary);
+  --bs-btn-hover-bg: var(--secondary);
+  --bs-btn-active-bg: var(--secondary);
+  --bs-btn-active-border-color: var(--secondary);
+}
+.coverPhoto {
+  height: 50vh;
+  min-height: 200px;
+  background-image: url(../images/bg-img.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+header .userPhoto {
+  width: 15rem;
+  bottom: 70%;
+}
+.camera {
+  right: 2rem;
+  bottom: 1rem;
+  width: 3rem;
+  height: 3rem;
+}
+.nav-pills button.active {
+  color: var(--primary) !important;
+  background-color: rgba(177, 177, 244, 0.5) !important;
+  border-radius: 50rem;
+  -webkit-border-radius: 50rem;
+  -moz-border-radius: 50rem;
+  -ms-border-radius: 50rem;
+  -o-border-radius: 50rem;
+}
+.tab-content .list i {
+  width: 2rem;
+}
+main .userPhoto img {
+  width: 3rem;
+}
+.modal-body .userPhoto img {
+  max-width: 4rem;
+}
+.modal-content {
+  height: 100%;
+}
+.modal-body textarea {
+  height: 15%;
+  outline: none;
+  resize: none;
+}
+#imagePreview {
+  max-width: 300px;
+  display: none;
+  margin-top: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+/* start login page */
+.sub-section {
+  max-width: 30rem;
+}
+/* end login page */
+
+@media (min-width: 767.98px) {
+  .post{
+    width: 40%;
+  }
+  .userPhoto {
+    position: static !important;
+  }
+  .camera {
+    width: auto;
+    height: auto;
+    border-radius: 1rem !important;
+    -webkit-border-radius: 1rem !important;
+    -moz-border-radius: 1rem !important;
+    -ms-border-radius: 1rem !important;
+    -o-border-radius: 1rem !important;
+  }
+}

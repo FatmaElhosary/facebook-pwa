@@ -12,47 +12,17 @@ window.addEventListener("scroll", function () {
   }
 });
 
-const baseURL = "https://jsonplaceholder.typicode.com";
-username = '';
+const baseURL = "https://linked-posts.routemisr.com";
 
-(function getUserData(userId) {
-  fetch(`${baseURL}/users/${userId}`)
-    .then((res) => res.json())
-    .then((data) => {
-      setData(data);
-    });
-})("1");
+getUserData();
+getUserPosts();
 
-function setData(userData) {
-  document.querySelectorAll(".userName").forEach((ele) => {
-    ele.innerHTML = userData.name || "Mohamed Omara";
-    username = userData.name
-  });
-  document.querySelector(".address").innerHTML = `${
-    userData?.address?.street || "El Shohada"
-  }, ${userData?.address?.city || "Al Minufiyah, Egypt"}`;
-}
-
-let userPosts = [];
-
-(function getPosts(userId) {
-  fetch(`${baseURL}/posts`)
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      return res.json();
-    })
-    .then((data) => {
-      userPosts = data.filter((post) => post.userId == userId);
-      displayPosts();
-    })
-    .catch((err) => console.error("Error fetching posts:", err));
-})("1");
-
-function displayPosts() {
-  const postsContainer = document.getElementById("posts");
-  postsContainer.innerHTML = ""; 
-  if (userPosts.length === 0) {
-    postsContainer.innerHTML = "<p>No posts available for this user.</p>";
+function getUserData() {
+  let token = localStorage.getItem("token");
+  if (!token) {
+    console.log("Token Not Found");
+    // redirect to login page
+    window.location.href = "./login.html";
     return;
   }
 
@@ -107,8 +77,10 @@ function createPost() {
       body: post,
       userId: 1,
     }),
+
+  fetch(`${baseURL}/users/profile-data`, {
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
+      token,
     },
   })
     .then((res) => res.json())
@@ -120,3 +92,58 @@ function createPost() {
     .catch((err) => console.error(err));
 }
 
+    .then((data) => {
+      setUserData(data);
+    });
+}
+
+function getUserPosts() {
+  const token = localStorage.getItem("token");
+  fetch(`${baseURL}/users/664bcf3e33da217c4af21f00/posts`, {
+    headers: {
+      token,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      showUserPosts(data.posts);
+    });
+}
+
+function showUserPosts(posts) {
+  document.querySelector(".userPosts").innerHTML = posts
+    .reverse()
+    .map(
+      (post) => `<div class="post bg-white p-4 mb-3 md:w-50 mx-auto rounded-2">
+                          <div class="header mb-2 userPhoto">
+                              <img src=${post.user.photo}
+                                  alt="" class="rounded-circle">
+                              <span class="fw-semibold">${post.user.name}</span>
+                          </div>
+                          <div class="body">
+                              <h3>${post.body}</h3>
+                              ${
+                                post.image
+                                  ? `<img src="${post.image}" alt="" class="w-100 rounded-2">`
+                                  : ""
+                              }
+                          </div>
+                      </div>`
+    )
+    .join("");
+}
+
+function setUserData(userData) {
+  document.querySelectorAll(".userName").forEach((ele) => {
+    ele.innerHTML = userData.user.name;
+  });
+  document.querySelector(".userType").innerHTML = userData.user.gender;
+  document.querySelector(".dob").innerHTML = userData.user.dateOfBirth;
+  document.querySelectorAll(".userPhoto img").forEach((ele) => {
+    ele.src = userData.user.photo;
+  });
+}
+
+document.querySelector(".backButton").addEventListener("click", () => {
+  history.back();
+});

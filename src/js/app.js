@@ -1,31 +1,57 @@
 var defferedPrompt;
+//import {baseURL} from "./profile.js";
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("/src/sw.js")
     .then((reg) => {
-      console.log("service worker is registered",reg);
+      console.log("service worker is registered", reg);
     })
-    .catch((err) => console.log("service worker is not registered",err));
+    .catch((err) => console.log("service worker is not registered", err));
 }
 
 // Fetch posts from the Fake API
-const apiUrl = "https://jsonplaceholder.typicode.com/posts"; // Example Fake API URL
+//https://linked-posts.routemisr.com/posts?limit=50
+//https://jsonplaceholder.typicode.com/posts
+const GET_ALL_POSTS = `https://linked-posts.routemisr.com/posts?limit=50`; // real API URL
 
 // Function to fetch and display posts
 async function fetchPosts() {
   try {
-    // Fetch data from the API
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error("Failed to fetch posts");
+    let token = localStorage.getItem("token");
+    if (!token) {
+      console.log("Token Not Found");
+      // redirect to login page
+      window.location.href = "./login.js";
+      return;
     }
+    // Fetch data from the API
+    let response = await fetch(GET_ALL_POSTS, {
+      headers: {
+        token,
+      },
+    });
+    response
+      .json()
+      .then((data) => {
+        console.log(data);
+        // response = data;
+        displayPosts(data.posts);
+      })
+      .catch((err) => {
+        throw new Error("Failed to fetch posts");
+      });
 
-    const posts = await response.json(); // Parse JSON data
-    displayPosts(posts); // Call function to display posts
+    // if (response.message != "success") {
+    //   throw new Error("Failed to fetch posts");
+    // }
+
+    // const posts = await response.posts; // Parse JSON data
+    // displayPosts(posts);
   } catch (error) {
     console.error("Error:", error);
-    document.getElementById("posts").innerHTML = "<p>Failed to load posts.</p>";
+    document.getElementById("home-posts").innerHTML =
+      "<p>Failed to load posts.</p>";
   }
 }
 
@@ -40,27 +66,28 @@ function displayPosts(posts) {
     postElement.innerHTML = `
      <div class="post-header">
         <img
-          src="images/profile-img.jpg"
+          src=${post.user.photo}
           alt="User Profile"
           class="profile-pic"
           
         />
         <div class="user-info">
-          <h4>Fatma</h4>
-          <p>${post.id} hour ago</p>
+          <h4>${post.user.name}</h4>
+          <p>${getHoursAgoSafe(post.createdAt)}   </p>
         </div>
       </div>
       <div class="post-content">
         <p>
          ${post.body}
         </p>
-        <img src="images/post-img.jpg" alt="post-img" class="" />
+        <img src=${post.image} alt="post-img" class="" />
       </div>
       <div class="post-footer">
         <button class="like-button">👍 Like</button>
         <button class="comment-button">💬 Comment</button>
         <button class="share-button">🔗 Share</button>
       </div>
+      
     `;
 
     postsContainer.appendChild(postElement);
@@ -76,4 +103,36 @@ window.addEventListener("beforeinstallprompt", function(event){
   event.preventDefault();
   defferedPrompt = event 
   return false ;
-})
+});
+
+function getHoursAgoSafe(timestamp) {
+  const pastDate = new Date(timestamp);
+  const now = new Date();
+  let hoursAgoSafe = "now";
+  if (pastDate > now) {
+    return "In the future";
+  }
+
+  const hoursAgo = Math.floor((now - pastDate) / (1000 * 60 * 60));
+  if (hoursAgo == 24) hoursAgoSafe = "yesterday";
+  else if (hoursAgo > 24) {
+    hoursAgoSafe = "Long Time Ago";
+  } else hoursAgoSafe = `${hoursAgo} hours ago`;
+  return hoursAgoSafe;
+}
+// console.log(getHoursAgoSafe('2024-06-09T16:02:40.280Z'));
+/* <div class="comments-section">
+<div class="comment">
+  <img
+    src=${post.comments[0].commentCreator.photo}
+    alt="User Profile"
+    class="profile-pic"
+  />
+  <div class="comment-content">
+    <h5>${post.comments[0].commentCreator.name}</h5>
+    <p>
+     ${post.comments[0].content}
+    </p>
+  </div>
+</div>
+</div>  */
