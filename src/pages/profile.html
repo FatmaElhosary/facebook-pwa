@@ -67,13 +67,13 @@
                     aria-selected="false">photos</button>
             </li>
         </ul>
-        <div class="container bg-white py-3 rounded-2">
+        <div class="container py-3 rounded-2">
 
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-posts" role="tabpanel" aria-labelledby="pills-home-tab"
                     tabindex="0">
-                    <h4 class="mb-4">Details</h4>
-                    <div class="d-flex flex-column gap-3 list mb-4">
+                    <h4 class="mb-0 py-4 px-4 bg-white">Details</h4>
+                    <div class="px-4 d-flex flex-column gap-3 list pb-4 mb-0 bg-white">
                         <div class="d-flex align-items-center gap-3">
                             <i class="fa-solid fa-graduation-cap fa-xl text-center"></i>
                             <div>Studies at Fci:faculty of computers and information shebin el kom</div>
@@ -97,13 +97,19 @@
                             <div class="dob"></div>
                         </div>
                     </div>
-                    <h4 class="mb-4">Posts</h4>
-                    <div class="d-flex justify-content-between justify-content-md-start gap-md-5 align-items-center">
-                        <div class="userPhoto  overflow-hidden d-flex align-items-center gap-3">
+                    <h4 class="px-4 mb-0 pb-4 bg-white">Posts</h4>
+                    <div
+                        class="px-4 pb-4 bg-white d-flex justify-content-between justify-content-md-start gap-md-5 align-items-center">
+                        <!-- Div trigger modal -->
+                        <div data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            class="userPhoto  overflow-hidden d-flex align-items-center gap-3">
                             <img src="" alt="" class="rounded-circle">
                             <span>What's on your mind?</span>
                         </div>
                         <i class="fa-regular fa-image fa-2xl" style="color: #4ab05b;"></i>
+                    </div>
+                    <div class="userPosts mt-3">
+                        
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab"
@@ -112,11 +118,46 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-sm-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 text-center flex-grow-1" id="exampleModalLabel">Create Post</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="userPhoto">
+                                <img class="userImg rounded-circle" src="#" alt="user profile">
+                            </div>
+                            <span class="fw-semibold">Mohamed Omara</span>
+                        </div>
+                        <textarea name="postText" id="" class="w-100 border-0 mt-3"
+                            placeholder="What's on your mind?"></textarea>
+                        <img id="imagePreview" src="#" alt="Image Preview" />
+                    </div>
+                    <div class="modal-footer flex-column">
+                        <label for="imageInput" class="align-self-start">
+                            <div class="d-flex  align-items-center align-self-start gap-4">
+                                <span class="fw-semibold">Add to your post</span>
+                                <div class="">
+                                    <input type="file" id="imageInput" class="d-none" />
+                                    <i class="fa-regular fa-image fa-2xl" style="color: #4ab05b;"></i>
+                                </div>
+                            </div>
+                        </label>
+                        <button type="button" class="btn btn-primary align-self-end addPost">Post</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
     <script src="../js/profile.js"></script>
+    <script src="../js/post.js"></script>
 </body>
 
 </html>
