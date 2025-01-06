@@ -88,19 +88,20 @@ function createPost() {
       token,
     },
   })
+  
     .then((res) => res.json())
     .then((data) => {console.log(data)
       document.querySelector("#postInput").value = '';
       userPosts.unshift(data)
       displayPosts()
+    }).then((data) => {
+      setUserData(data);
     })
     .catch((err) => console.error(err));
 }
 
-    .then((data) => {
-      setUserData(data);
-    });
-}
+    
+
 
 function getUserPosts() {
   const token = localStorage.getItem("token");
