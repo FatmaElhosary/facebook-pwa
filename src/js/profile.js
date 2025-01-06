@@ -14,7 +14,10 @@ window.addEventListener("scroll", function () {
 
 const baseURL = "https://linked-posts.routemisr.com";
 
-(function getUserData() {
+getUserData();
+getUserPosts();
+
+function getUserData() {
   let token = localStorage.getItem("token");
   if (!token) {
     console.log("Token Not Found");
@@ -24,18 +27,51 @@ const baseURL = "https://linked-posts.routemisr.com";
   }
   fetch(`${baseURL}/users/profile-data`, {
     headers: {
-      token: localStorage.getItem("token"),
+      token,
     },
   })
     .then((res) => res.json())
     .then((data) => {
-      setData(data);
+      setUserData(data);
     });
-})();
+}
 
-function tokenExist() {}
+function getUserPosts() {
+  const token = localStorage.getItem("token");
+  fetch(`${baseURL}/users/664bcf3e33da217c4af21f00/posts`, {
+    headers: {
+      token,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      showUserPosts(data.posts);
+    });
+}
 
-function setData(userData) {
+function showUserPosts(posts) {
+  document.querySelector(".userPosts").innerHTML = posts
+    .map(
+      (post) => `<div class="post bg-white p-4 mb-3 md:w-50 mx-auto rounded-2">
+                          <div class="header mb-2 userPhoto">
+                              <img src=${post.user.photo}
+                                  alt="" class="rounded-circle">
+                              <span class="fw-semibold">${post.user.name}</span>
+                          </div>
+                          <div class="body">
+                              <h3>${post.body}</h3>
+                              ${
+                                post.image
+                                  ? `<img src="${post.image}" alt="" class="w-100 rounded-2">`
+                                  : ""
+                              }
+                          </div>
+                      </div>`
+    )
+    .join("");
+}
+
+function setUserData(userData) {
   document.querySelectorAll(".userName").forEach((ele) => {
     ele.innerHTML = userData.user.name;
   });

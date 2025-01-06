@@ -17,7 +17,7 @@ header {
 .coverPhoto {
   height: 50vh;
   min-height: 200px;
-  background-image: url(../imgs/bg-img.jpg);
+  background-image: url(../images/bg-img.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -46,6 +46,24 @@ header .userPhoto {
 main .userPhoto img {
   width: 3rem;
 }
+.modal-body .userPhoto img {
+  max-width: 4rem;
+}
+.modal-content {
+  height: 100%;
+}
+.modal-body textarea {
+  height: 15%;
+  outline: none;
+  resize: none;
+}
+#imagePreview {
+  max-width: 300px;
+  display: none;
+  margin-top: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
 /* start login page */
 .sub-section {
   max-width: 30rem;
@@ -53,6 +71,9 @@ main .userPhoto img {
 /* end login page */
 
 @media (min-width: 767.98px) {
+  .post{
+    width: 40%;
+  }
   .userPhoto {
     position: static !important;
   }
