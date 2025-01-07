@@ -25,16 +25,83 @@ function getUserData() {
     window.location.href = "./login.html";
     return;
   }
+
+  userPosts.forEach((post) => {    
+    const postElement = document.createElement("div");
+    postElement.className = "post-container";
+    postElement.innerHTML = `
+      <div class="post-header">
+        <img
+          src="images/profile-img.jpg"
+          alt="User Profile"
+          class="profile-pic"
+        />
+        <div class="user-info">
+          <h4>${username}</h4>
+        </div>
+      </div>
+      <div class="post-content">
+        <p>${post.body}</p>
+      </div>
+      <div class="post-footer">
+        <button class="like-button">👍 Like</button>
+        <button class="comment-button">💬 Comment</button>
+        <button class="share-button">🔗 Share</button>
+      </div>
+    `;
+    postsContainer.appendChild(postElement);
+  });
+}
+
+function openPrompet() {
+
+  if(defferedPrompt){
+    defferedPrompt.prompt();
+
+  }
+  defferedPrompt.userChoise.then(function (choiseRes){
+    if(choiseRes.outcome =="dismissed"){
+      console.log("dismissed")
+    }else{
+      console.log("accepted")
+    }
+  })
+  }
+
+function createPost() {
+  let post = document.querySelector("#postInput").value;
+  fetch(`${baseURL}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ 
+      title: 'foo',
+      body: post,
+      userId: 1,
+    }),
+
+  })
+
   fetch(`${baseURL}/users/profile-data`, {
     headers: {
       token,
     },
   })
+  
     .then((res) => res.json())
-    .then((data) => {
+    .then((data) => {console.log(data)
+      document.querySelector("#postInput").value = '';
+      userPosts.unshift(data)
+      displayPosts()
+    }).then((data) => {
       setUserData(data);
-    });
+    })
+    .catch((err) => console.error(err));
 }
+
+    
+
 
 function getUserPosts() {
   const token = localStorage.getItem("token");

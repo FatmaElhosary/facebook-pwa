@@ -1,3 +1,4 @@
+var defferedPrompt;
 //import {baseURL} from "./profile.js";
 
 if ("serviceWorker" in navigator) {
@@ -95,6 +96,15 @@ function displayPosts(posts) {
 
 // Call the function to fetch and display posts when the page loads
 fetchPosts();
+
+
+// Manual Prompet (close defult prompt)
+window.addEventListener("beforeinstallprompt", function(event){
+  event.preventDefault();
+  defferedPrompt = event 
+  return false ;
+});
+
 function getHoursAgoSafe(timestamp) {
   const pastDate = new Date(timestamp);
   const now = new Date();
