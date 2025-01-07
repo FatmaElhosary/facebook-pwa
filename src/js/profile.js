@@ -67,6 +67,11 @@ function showUserPosts(posts) {
                                   : ""
                               }
                           </div>
+                          <div class="d-flex justify-content-between mt-2 py-0 px-3">
+                            <button class="text-primary bg-transparent border-0">👍 Like</button>
+                            <button class="text-primary bg-transparent border-0">💬 Comment</button>
+                            <button class="text-primary bg-transparent border-0">🔗 Share</button>
+                          </div>
                       </div>`
     )
     .join("");

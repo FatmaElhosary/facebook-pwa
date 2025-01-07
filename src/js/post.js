@@ -2,13 +2,13 @@ const addPostBtn = document.querySelector(".addPost");
 const postContent = document.querySelector(".modal-body textarea");
 const imageInput = document.querySelector("#imageInput");
 const closeModalBtn = document.querySelector(".modal-header .btn-close");
-
+let pathLoginPage = "./login.html";
 addPostBtn.addEventListener("click", () => {
   const token = localStorage.getItem("token");
   if (!token) {
     console.log("Token Not Found");
     // redirect to login page
-    window.location.href = "./login.html";
+    window.location.href = pathLoginPage;
     return;
   }
   const formData = new FormData();
@@ -20,6 +20,7 @@ addPostBtn.addEventListener("click", () => {
 });
 
 function addPost(data, token) {
+  const baseURL = "https://linked-posts.routemisr.com";
   fetch(`${baseURL}/posts`, {
     method: "POST",
     headers: {
