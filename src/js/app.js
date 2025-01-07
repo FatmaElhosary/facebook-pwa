@@ -1,4 +1,5 @@
-//import {baseURL} from "./profile.js";
+const baseURL = "https://linked-posts.routemisr.com";
+pathLoginPage = "./pages/login.html";
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
@@ -9,10 +10,34 @@ if ("serviceWorker" in navigator) {
     .catch((err) => console.log("service worker is not registered", err));
 }
 
-// Fetch posts from the Fake API
-//https://linked-posts.routemisr.com/posts?limit=50
-//https://jsonplaceholder.typicode.com/posts
-const GET_ALL_POSTS = `https://linked-posts.routemisr.com/posts?limit=50`; // real API URL
+const GET_ALL_POSTS = `${baseURL}/posts?limit=50`; // real API URL
+getUserData();
+function getUserData() {
+  let token = localStorage.getItem("token");
+  if (!token) {
+    console.log("Token Not Found");
+    // redirect to login page
+    window.location.href = "./login.html";
+    return;
+  }
+  fetch(`${baseURL}/users/profile-data`, {
+    headers: {
+      token,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log(data);
+      setUserData(data);
+    });
+}
+
+function setUserData(userData) {
+  document.querySelector("#Navbar img").src = userData.user.photo;
+  document.querySelectorAll(".userPhoto img").forEach((ele) => {
+    ele.src = userData.user.photo;
+  });
+}
 
 // Function to fetch and display posts
 async function fetchPosts() {
@@ -21,7 +46,7 @@ async function fetchPosts() {
     if (!token) {
       console.log("Token Not Found");
       // redirect to login page
-      window.location.href = "./login.js";
+      window.location.href = pathLoginPage;
       return;
     }
     // Fetch data from the API
@@ -33,8 +58,6 @@ async function fetchPosts() {
     response
       .json()
       .then((data) => {
-        console.log(data);
-        // response = data;
         displayPosts(data.posts);
       })
       .catch((err) => {
@@ -68,25 +91,29 @@ function displayPosts(posts) {
           src=${post.user.photo}
           alt="User Profile"
           class="profile-pic"
-          
+
         />
         <div class="user-info">
           <h4>${post.user.name}</h4>
           <p>${getHoursAgoSafe(post.createdAt)}   </p>
         </div>
       </div>
-      <div class="post-content">
+      <div class="post-content p-3">
         <p>
          ${post.body}
         </p>
-        <img src=${post.image} alt="post-img" class="" />
+        ${
+          post.image
+            ? `<img src="${post.image}" alt="" class="w-100 rounded-2">`
+            : ""
+        }
       </div>
       <div class="post-footer">
         <button class="like-button">👍 Like</button>
         <button class="comment-button">💬 Comment</button>
         <button class="share-button">🔗 Share</button>
       </div>
-      
+
     `;
 
     postsContainer.appendChild(postElement);
@@ -110,19 +137,8 @@ function getHoursAgoSafe(timestamp) {
   } else hoursAgoSafe = `${hoursAgo} hours ago`;
   return hoursAgoSafe;
 }
-// console.log(getHoursAgoSafe('2024-06-09T16:02:40.280Z'));
-/* <div class="comments-section">
-<div class="comment">
-  <img
-    src=${post.comments[0].commentCreator.photo}
-    alt="User Profile"
-    class="profile-pic"
-  />
-  <div class="comment-content">
-    <h5>${post.comments[0].commentCreator.name}</h5>
-    <p>
-     ${post.comments[0].content}
-    </p>
-  </div>
-</div>
-</div>  */
+
+document.querySelector(".logout").addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.href = pathLoginPage;
+});

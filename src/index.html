@@ -1,104 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="theme-color" content="#1877f2" />
-    <title>Facebook</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="manifest" href="./manifest.json">
-  </head>
-  <body class="bg-white">
-    <!-- <a href="./pages/profile.html">Go to my profile</a> -->
-    <!-- start Navbar -->
-     <div id="Navbar" class="bg-white">
-       <div class="first-menu">
-        <h4 class="title">Facebook</h4>
-        <div class="icons my-2  gap-2">
-            <div class="header-icon">
-                <i class="fa fa-search"></i>
-            </div>
-            <div class="header-icon">
-                <i class="fa fa-align-justify"></i>
-            </div>
-            <a href="./pages/profile.html">   <img
-              src="images/profile-img.jpg"
-              alt="User Profile"
-              class="profile-pic"
-            /></a>
-         
-        </div>
-       </div>
 
-       <div class="second-menu d-none">
-        <div class="sec-icon">
-            <i class="fa fa-home"></i>
-        </div>
-         <div class="sec-icon">
-            <i class="fa fa-users"></i>
-        </div>
-        <div class="sec-icon">
-            <i class="fa fa-comments"></i>
-        </div>
-        <div class="sec-icon">
-            <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="sec-icon">
-            <i class="fa fa-bell"></i>
-        </div>
-        <div class="sec-icon">
-            <i class="fa fa-list-alt"></i>
-        </div>
-       </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#1877f2" />
+  <title>Facebook</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- fortawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- custom styles -->
+  <link rel="stylesheet" href="./css/styles.css" />
+  <!-- manifest -->
+  <link rel="manifest" href="./manifest.json">
+</head>
 
-     </div>
-     <!-- end Navbar -->
-    <div id="home-posts"></div>
-     <script type="module" src="js/app.js"></script>
-  </body>
+<body>
+  <!-- <a href="./pages/profile.html">Go to my profile</a> -->
+  <!-- start Navbar -->
+  <div id="Navbar" class="bg-white p-2">
+    <div class="first-menu">
+      <h4 class="title">Facebook</h4>
+      <div class="icons my-2  gap-2">
+        <div class="header-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <div class="header-icon">
+          <i class="fa fa-align-justify"></i>
+        </div>
+        <a href="./pages/profile.html"> <img src="" alt="User Profile" class="profile-pic" /></a>
+
+      </div>
+    </div>
+
+    <div class="second-menu">
+      <div class="sec-icon border-0">
+        <i class="fa fa-home"></i>
+      </div>
+      <div class="sec-icon border-0">
+        <i class="fa fa-users"></i>
+      </div>
+      <div class="sec-icon border-0">
+        <i class="fa fa-comments"></i>
+      </div>
+      <div class="sec-icon border-0">
+        <i class="fa fa-sticky-note"></i>
+      </div>
+      <div class="sec-icon border-0">
+        <i class="fa fa-bell"></i>
+      </div>
+      <div class="sec-icon border-0">
+        <i class="fa-solid fa-right-from-bracket logout"></i>
+      </div>
+    </div>
+
+  </div>
+  <!-- end Navbar -->
+
+  <div class="px-4 pb-4 rounded-bottom-3 bg-white d-flex justify-content-between justify-content-md-start gap-md-5 align-items-center">
+    <!-- Div trigger modal -->
+    <div data-bs-toggle="modal" data-bs-target="#exampleModal"
+      class="userPhoto  overflow-hidden d-flex align-items-center gap-3">
+      <img src="" alt="" class="rounded-circle">
+      <input type="text" class="bg-dark-subtle rounded-4 border-0 ps-3 py-1" placeholder="What's on your mind?">
+    </div>
+    <i class="fa-regular fa-image fa-2xl" style="color: #4ab05b;"></i>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-center flex-grow-1" id="exampleModalLabel">Create Post</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex align-items-center gap-2">
+            <div class="userPhoto">
+              <img class="userImg rounded-circle" src="#" alt="user profile">
+            </div>
+            <span class="fw-semibold">Mohamed Omara</span>
+          </div>
+          <textarea name="postText" id="" class="w-100 border-0 mt-3" placeholder="What's on your mind?"></textarea>
+          <img id="imagePreview" src="" alt="Image Preview" />
+        </div>
+        <div class="modal-footer flex-column">
+          <label for="imageInput" class="align-self-start">
+            <div class="d-flex  align-items-center align-self-start gap-4">
+              <span class="fw-semibold">Add to your post</span>
+              <div class="">
+                <input type="file" id="imageInput" class="d-none" />
+                <i class="fa-regular fa-image fa-2xl" style="color: #4ab05b;"></i>
+              </div>
+            </div>
+          </label>
+          <button type="button" class="btn btn-primary align-self-end addPost">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="home-posts" class="mx-2"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <script src="./js/post.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+
 </html>
-
-<!-- <div class="post-container">
-        <div class="post-header">
-          <img
-            src="images/profile-img.jpg"
-            alt="User Profile"
-            class="profile-pic"
-          />
-          <div class="user-info">
-            <h4>Fatma</h4>
-            <p>1 hour ago</p>
-          </div>
-        </div>
-        <div class="post-content">
-          <p>
-            Lorem, ipsum dolorng elit. Dolor quibusdam dolores voluptate impedit
-            temporibus voluptas voluptatem in error eaque ea!
-          </p>
-          <img src="images/post-img.jpg" alt="post-img" class="" />
-        </div>
-        <div class="post-footer">
-          <button class="like-button">👍 Like</button>
-          <button class="comment-button">💬 Comment</button>
-          <button class="share-button">🔗 Share</button>
-        </div>
-          <div class="comments-section">
-          <div class="comment">
-            <img
-              src="profile-placeholder.png"
-              alt="User Profile"
-              class="profile-pic"
-            />
-            <div class="comment-content">
-              <h5>Nouran</h5>
-              <p>
-                Lorem, ipsum dolorng elit. Dolor quibusdam dolores voluptate
-                impedit temporibus voluptas voluptatem in error eaque ea!
-              </p>
-            </div>
-          </div>
-        </div>  
-      </div> -->

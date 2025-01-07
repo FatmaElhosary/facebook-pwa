@@ -2,6 +2,9 @@
   --primary: #0866ff;
   --secondary: #c5c2c2;
 }
+body {
+  background-color: #f2f4f7;
+}
 .title {
   color: var(--primary);
   font-weight: 600;
@@ -43,7 +46,7 @@
 }
 .sec-icon {
   border: 1px solid rgb(239, 237, 237);
-  padding: 1.4rem;
+  padding: 1rem;
 }
 body {
   font-family: Arial, sans-serif;
@@ -119,7 +122,7 @@ body {
   font-size: 14px;
 }
 
- .comments-section {
+.comments-section {
   margin-top: 15px;
   border-top: 1px solid #ddd;
   padding-top: 10px;
@@ -139,4 +142,27 @@ body {
   margin: 0;
   font-size: 13px;
   color: #555;
-} 
+}
+.userPhoto img {
+  width: 3rem;
+}
+/* Start Modal  */
+.modal-body .userPhoto img {
+  max-width: 4rem;
+}
+.modal-content {
+  height: 100%;
+}
+.modal-body textarea {
+  height: 15%;
+  outline: none;
+  resize: none;
+}
+#imagePreview {
+  max-width: 300px;
+  display: none;
+  margin-top: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+/* End Modal  */
