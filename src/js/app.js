@@ -5,12 +5,12 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("/src/sw.js")
     .then((reg) => {
-      console.log("service worker is registered", reg);
+      console.log("service worker is registered");
     })
     .catch((err) => console.log("service worker is not registered", err));
 }
 
-const GET_ALL_POSTS = `${baseURL}/posts?limit=50`; // real API URL
+const GET_ALL_POSTS = `${baseURL}/posts?limit=20`; // real API URL
 getUserData();
 function getUserData() {
   let token = localStorage.getItem("token");
