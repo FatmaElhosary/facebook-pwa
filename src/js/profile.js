@@ -89,5 +89,5 @@ function setUserData(userData) {
 }
 
 document.querySelector(".backButton").addEventListener("click", () => {
-  history.back();
+  location.href = "../index.html";
 });
